@@ -1,12 +1,12 @@
 import styled from "styled-components";
+import { gradient, secondaryFontColor, primaryFontColor } from "../../../assets/variables";
 
-const gradient = "linear-gradient(97.54deg, #002f52 35.49%, #326589 165.37%)";
 const filter = "invert(100%) saturate(0%)";
-const [primaryFontColor, secondaryFontColor] = ["#000000", "#fff"];
 
 const StyledCategories = styled.nav<{ open: boolean }>`
   display: inline-block;
   order: -1;
+  
 
   @media screen and (min-width: 1024px) {
     order: 0;

@@ -1,0 +1,1 @@
+export const [primaryFontColor, secondaryFontColor, gradient] = ["#000000", "#fff", "linear-gradient(97.54deg, #002f52 35.49%, #326589 165.37%)"];
