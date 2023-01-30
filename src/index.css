@@ -20,10 +20,19 @@ body {
   background-color: gray;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  overflow-x: hidden;
+  width: 100%;
+}
+
 :where(*) {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  max-width: 100vw;
   color: inherit;
 }
 
