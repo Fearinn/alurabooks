@@ -9,6 +9,7 @@ const StyledBanner = styled.div`
   background: ${gradient};
   color: ${secondaryFontColor};
   padding: 2rem 1.5rem;
+  width: 100%;
 
   h2 {
     font-size: 1.125rem;
