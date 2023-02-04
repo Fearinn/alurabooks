@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@types/styled-components": "^5.1.26",
-    "alurabooks-ds-fearinn": "^0.6.2",
+    "alurabooks-ds-fearinn": "^0.6.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
