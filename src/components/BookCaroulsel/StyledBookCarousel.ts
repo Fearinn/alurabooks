@@ -5,7 +5,6 @@ export const StyledBookCarousel = styled.div`
   justify-content: center;
   gap: 1rem;
   overflow-x: hidden;
-  width: 100%;
 
   &:has(.book-cover:active) {
     .book-cover {

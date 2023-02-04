@@ -16,7 +16,7 @@ function BookSection({ title, books }: IBookSection) {
         {books.map((book) => {
           return (
             book.id === bookSelected.id && (
-              <AbCard key={book.id}>
+              <AbCard key={book.id} className="abcard">
                 <BookCard {...book} />
               </AbCard>
             )
