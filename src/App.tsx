@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import BookSection from "./components/BookSection";
 import IBook from "./interfaces/Book";
 import IBookSection from "./interfaces/BookSection";
+import AskAccount from "./components/AskAccount";
 
 const lancamentos: IBook[] = [
   {
@@ -82,6 +83,7 @@ function App() {
             />
           );
         })}
+        <AskAccount/>
       </main>
     </>
   );
