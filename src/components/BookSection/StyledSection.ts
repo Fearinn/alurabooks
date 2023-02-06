@@ -6,7 +6,7 @@ const StyledBookSection = styled.section`
   flex-direction: column;
   align-items: center;
   background-color: ${secondaryFontColor};
-  padding: 1.25rem 0;
+  padding: 1.25rem 0 0 0;
   width: 100%;
 
   .books {
@@ -18,6 +18,7 @@ const StyledBookSection = styled.section`
     background: #ebecee;
     width: 100%;
 
+    
     @media screen and (min-width: 1024px) {
       padding: 2rem 9.5rem;
     }
