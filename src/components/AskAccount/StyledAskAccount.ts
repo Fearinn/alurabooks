@@ -29,6 +29,10 @@ const StyledAskAccount = styled.div`
     text-align: center;
     width: 305px;
 
+    h2 {
+      font-weight: 500;
+    }
+
     @media screen and (min-width: 1024px) {
         text-align: start;
     }
