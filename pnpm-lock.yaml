@@ -5,7 +5,7 @@ specifiers:
   '@types/react-dom': ^18.0.9
   '@types/styled-components': ^5.1.26
   '@vitejs/plugin-react': ^3.0.0
-  alurabooks-ds-fearinn: ^0.6.7
+  alurabooks-ds-fearinn: ^0.6.9
   react: ^18.2.0
   react-dom: ^18.2.0
   react-icons: ^4.7.1
@@ -15,7 +15,7 @@ specifiers:
 
 dependencies:
   '@types/styled-components': 5.1.26
-  alurabooks-ds-fearinn: 0.6.7_biqbaboplfbrettd7655fr4n2y
+  alurabooks-ds-fearinn: 0.6.9_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.7.1_react@18.2.0
@@ -568,8 +568,8 @@ packages:
       - supports-color
     dev: true
 
-  /alurabooks-ds-fearinn/0.6.7_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-TvA68oOcyBB5mdJgD8RcjfTZyEr1lsW3jPiYByrki3JeYX9XmudWEyHqyiLS7zi3LGlLStrqCtmbJ1etM7l9lA==}
+  /alurabooks-ds-fearinn/0.6.9_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-gmnVQouLZYEl6KswqApSmwI39iv/lJVJYWW3q48mfP7W8tFeb0uSC1a8ZiGAL6SubdXqruH3MThZTp+JCV2CxA==}
     engines: {node: '>=10'}
     peerDependencies:
       react: '>=16'
