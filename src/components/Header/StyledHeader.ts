@@ -86,4 +86,21 @@ const StyledLogin = styled.button`
   }
 `;
 
-export { StyledHeader, StyledLogin };
+const StyledModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  @media screen and (min-width: 1024px) {
+    align-items: center;
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  img {
+    aspect-ratio: 1;
+    height: 277px;
+  }
+`;
+
+export { StyledHeader, StyledLogin, StyledModalContent };

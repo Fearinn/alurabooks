@@ -1,13 +1,14 @@
 import { AbModal } from "alurabooks-ds-fearinn";
 import { useState } from "react";
+import RegistrationForm from "../RegistrationForm";
 import Categories from "./Categories";
-import { StyledHeader, StyledLogin } from "./StyledHeader";
+import { StyledHeader, StyledLogin, StyledModalContent } from "./StyledHeader";
 
 function Header() {
   const [modal, setModal] = useState(false);
-  
+
   function closeModal() {
-    setModal(false)
+    setModal(false);
   }
 
   return (
@@ -31,7 +32,17 @@ function Header() {
           </StyledLogin>
         </nav>
       </StyledHeader>
-      <AbModal title="login" whenClosed={closeModal} htmlId="abmodal-login-id" open={modal}/>
+      <AbModal
+        title="Cadastro"
+        onClose={closeModal}
+        htmlId="abmodal-login-id"
+        open={modal}
+      >
+        <StyledModalContent>
+          <img alt="" src="/login-modal.svg"/>
+          <RegistrationForm onSubmit={closeModal}/>
+        </StyledModalContent>
+      </AbModal>
     </>
   );
 }
