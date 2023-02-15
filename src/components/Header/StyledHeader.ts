@@ -4,13 +4,14 @@ const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   background-color: #ffffff;
-  gap: 2rem;
+  justify-content: space-between;
   padding: 1rem 1rem 1rem 0;
   height: 80px;
-  width: 100vw;
+  width: 100%;
 
   @media screen and (min-width: 1024px) {
     padding: 1.125rem 5rem;
+    gap: 2rem;
   }
 
   .logo {
@@ -22,6 +23,10 @@ const StyledHeader = styled.header`
 
     @media screen and (min-width: 1024px) {
       margin-right: 1rem;
+    }
+
+    @media screen and (max-width: 475px) {
+      display: none;
     }
 
     .logo-image {
@@ -48,6 +53,10 @@ const StyledHeader = styled.header`
     flex-grow: 1;
     justify-content: flex-end;
     gap: 0.5rem;
+
+    @media screen and (max-width: 428px) {
+      justify-content: center;
+    }
   }
 
   button,
@@ -69,10 +78,11 @@ const StyledLogin = styled.button`
   gap: 0.5rem;
 
   .login-bg {
+    aspect-ratio: 1;
     background: url("/profile.svg");
+    background-size: contain;
     border-radius: 50%;
     height: 2rem;
-    width: 2rem;
   }
 
   span {
