@@ -1,6 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
 import StyledLateralNav from "./StyledLateralNav";
-import "../../assets/myaccount.scss";
 
 function LateralNav({ links }: { links: { name: string; href: string }[] }) {
   const location = useLocation();
