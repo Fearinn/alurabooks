@@ -1,19 +1,18 @@
-import Banner from "./components/Banner";
-import Header from "./components/Header";
-import BookSection from "./components/BookSection";
-import IBook from "./interfaces/Book";
-import IBookSection from "./interfaces/BookSection";
-import AskAccount from "./components/AskAccount";
-import Newsletter from "./components/Newsletter";
 import Home from "./pages/Home";
-
-
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Purchases from "./pages/Purchases";
+import MyAccount from "./pages/MyAccount/MyAccount";
 
 function App() {
   return (
-    <>
-      <Home/>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="minha-conta" element={<MyAccount />}>
+          <Route path="pedidos" element={<Purchases/>}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
