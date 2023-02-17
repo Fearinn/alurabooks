@@ -1,14 +1,13 @@
 import { AbButton, AbInput } from "alurabooks-ds-fearinn";
-import axios, { AxiosResponse } from "axios";
 import { useState } from "react";
-import { useGetToken, useSaveToken } from "../../utils/hooks";
+import http from "../../http";
+import { useSaveToken } from "../../utils/hooks";
 import StyledRegistrationForm from "../RegistrationForm/StyledRegistrationForm";
 
 function LoginForm({ onSubmit }: { onSubmit: () => void }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  
   const saveToken = useSaveToken();
 
   function loginUser(event: React.FormEvent<HTMLFormElement>) {
@@ -19,9 +18,7 @@ function LoginForm({ onSubmit }: { onSubmit: () => void }) {
       senha: password,
     };
 
-    console.log(user);
-
-    axios
+    http
       .post("http://localhost:8000/public/login", user)
       .then((response) => {
         saveToken(response.data.access_token);

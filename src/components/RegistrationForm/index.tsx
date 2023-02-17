@@ -1,7 +1,7 @@
 import { AbButton, AbInput } from "alurabooks-ds-fearinn";
 import { useState } from "react";
 import StyledRegistrationForm from "./StyledRegistrationForm";
-import axios from "axios";
+import http from "../../http";
 
 function RegistrationForm({onSubmit}: {onSubmit: () => void}) {
   const [name, setName] = useState("");
@@ -25,7 +25,7 @@ function RegistrationForm({onSubmit}: {onSubmit: () => void}) {
       confirmPassword,
     };
 
-    axios
+    http
       .post("http://localhost:8000/public/registrar", user)
       .then(() => {
         alert("Usuário cadastrado com sucesso!");
