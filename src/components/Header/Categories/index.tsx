@@ -28,7 +28,8 @@ function Categories() {
         className="main-button"
         type="button"
         onClick={() => setOpen(!open)}
-        
+        aria-haspopup="menu"
+        aria-pressed={open}
       >
         <span className="categories-long">Categorias</span>
         <span className="categories-hamburger">
