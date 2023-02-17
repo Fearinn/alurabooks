@@ -1,12 +1,15 @@
 import styled from "styled-components";
-import { gradient, secondaryFontColor, primaryFontColor } from "../../../assets/variables";
+import {
+  gradient,
+  secondaryFontColor,
+  primaryFontColor,
+} from "../../../assets/variables";
 
 const filter = "invert(100%) saturate(0%)";
 
-const StyledCategories = styled.nav<{ open: boolean }>`
+const StyledCategories = styled.div<{ open: boolean }>`
   display: inline-block;
   order: -1;
-  
 
   @media screen and (min-width: 1024px) {
     order: 0;
@@ -47,27 +50,22 @@ const StyledCategories = styled.nav<{ open: boolean }>`
     }
   }
 
-  ul {
+  nav {
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
     list-style: none;
     position: absolute;
-  }
 
-  .category button {
-    display: block;
-    background: ${gradient};
-    background-clip: text;
-    color: transparent;
-    text-align: left;
-    padding: 1rem 1.5rem;
-    width: 100%;
-    -webkit-background-clip: text;
-
-    &::after {
-      margin: 0.5rem;
-      content: ">";
+    a {
+      display: block;
+      background: ${gradient};
+      background-clip: text;
+      color: transparent;
+      text-align: left;
+      padding: 1rem 1.5rem;
+      width: 100%;
+      -webkit-background-clip: text;
     }
   }
 `;

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import StyledCategories from "./StyledCategories";
 
 function Categories() {
@@ -23,7 +24,12 @@ function Categories() {
 
   return (
     <StyledCategories open={open} ref={categoryRef}>
-      <button className="main-button" type="button" onClick={() => setOpen(!open)}>
+      <button
+        className="main-button"
+        type="button"
+        onClick={() => setOpen(!open)}
+        
+      >
         <span className="categories-long">Categorias</span>
         <span className="categories-hamburger">
           <svg
@@ -41,23 +47,13 @@ function Categories() {
         </span>
       </button>
       {open && (
-        <ul>
-          <li className="category">
-            <button>Programação</button>
-          </li>
-          <li className="category">
-            <button>Front-End</button>
-          </li>
-          <li className="category">
-            <button>Infraestrutura</button>
-          </li>
-          <li className="category">
-            <button>Business</button>
-          </li>
-          <li className="category">
-            <button>Design & UX</button>
-          </li>
-        </ul>
+        <nav>
+          <Link to="/">Programação</Link>
+          <Link to="/">Front-End</Link>
+          <Link to="/">Infraestrutura</Link>
+          <Link to="/">Business</Link>
+          <Link to="/">Design & UX</Link>
+        </nav>
       )}
     </StyledCategories>
   );
