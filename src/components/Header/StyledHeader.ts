@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledHeader = styled.header`
+export const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   background-color: #ffffff;
@@ -72,7 +72,7 @@ const StyledHeader = styled.header`
   }
 `;
 
-const StyledLogin = styled.button`
+export const StyledUserOption = styled.button`
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -96,7 +96,7 @@ const StyledLogin = styled.button`
   }
 `;
 
-const StyledModalContent = styled.div`
+export const StyledModalContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -113,4 +113,4 @@ const StyledModalContent = styled.div`
   }
 `;
 
-export { StyledHeader, StyledLogin, StyledModalContent };
+

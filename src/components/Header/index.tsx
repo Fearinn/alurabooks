@@ -4,7 +4,11 @@ import { useGetToken } from "../../utils/hooks";
 import LoginForm from "../LoginForm";
 import RegistrationForm from "../RegistrationForm";
 import Categories from "./Categories";
-import { StyledHeader, StyledLogin, StyledModalContent } from "./StyledHeader";
+import {
+  StyledHeader,
+  StyledUserOption,
+  StyledModalContent,
+} from "./StyledHeader";
 import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
@@ -41,7 +45,7 @@ function Header() {
         <nav className="user-navigation">
           {!logged ? (
             <>
-              <StyledLogin
+              <StyledUserOption
                 type="button"
                 className="login"
                 aria-haspopup="dialog"
@@ -49,8 +53,8 @@ function Header() {
               >
                 <div className="login-bg" />
                 <span>Cadastre-se</span>
-              </StyledLogin>
-              <StyledLogin
+              </StyledUserOption>
+              <StyledUserOption
                 type="button"
                 className="login"
                 aria-haspopup="dialog"
@@ -58,10 +62,10 @@ function Header() {
               >
                 <div className="login-bg" />
                 <span>Login</span>
-              </StyledLogin>
+              </StyledUserOption>
             </>
           ) : (
-            <StyledLogin
+            <StyledUserOption
               type="button"
               className="login"
               aria-label="ir para 'minha conta'"
@@ -69,7 +73,7 @@ function Header() {
             >
               <div className="login-bg" />
               <span>Minha conta</span>
-            </StyledLogin>
+            </StyledUserOption>
           )}
         </nav>
       </StyledHeader>
