@@ -1,5 +1,4 @@
 import { AbModal } from "alurabooks-ds-fearinn";
-import { useState } from "react";
 import { useTypedDispatch, useTypedSelector } from "../../utils/hooks";
 import LoginForm from "../LoginForm";
 import RegistrationForm from "../RegistrationForm";
@@ -10,29 +9,37 @@ import {
   StyledModalContent,
 } from "./StyledHeader";
 import { Link, useNavigate } from "react-router-dom";
-import  { doLogin } from "../../store/reducers/login";
+import { doLogin } from "../../store/reducers/login";
+import {
+  closeLoginModal,
+  openLoginModal,
+} from "../../store/reducers/loginModal";
+import {
+  closeRegistrationModal,
+  openRegistrationModal,
+} from "../../store/reducers/registrationModal";
 
 function Header() {
-  const [registrationModal, setRegistrationModal] = useState(false);
-  const [loginModal, setLoginModal] = useState(false);
+  const registrationModal = useTypedSelector(
+    (state) => state.registrationModal
+  );
+  const loginModal = useTypedSelector((state) => state.loginModal);
   const isLogged = useTypedSelector((state) => state.login);
-
   const dispatch = useTypedDispatch();
-
   const navigate = useNavigate();
 
-  function closeRegistrationModal() {
-    setRegistrationModal(false);
+  function onCloseRegistrationModal() {
+    dispatch(closeRegistrationModal());
   }
 
-  function closeLoginModal() {
-    setLoginModal(false);
+  function onCloseLoginModal() {
+    dispatch(closeLoginModal());
   }
 
   function onLogin() {
-    if (registrationModal) closeRegistrationModal();
-    if (loginModal) closeLoginModal();
-    dispatch(doLogin())
+    if (registrationModal) onCloseRegistrationModal();
+    if (loginModal) onCloseLoginModal();
+    dispatch(doLogin());
   }
 
   return (
@@ -52,7 +59,7 @@ function Header() {
                 type="button"
                 className="login"
                 aria-haspopup="dialog"
-                onClick={() => setRegistrationModal(true)}
+                onClick={() => dispatch(openRegistrationModal())}
               >
                 <div className="login-bg" />
                 <span>Cadastre-se</span>
@@ -61,7 +68,7 @@ function Header() {
                 type="button"
                 className="login"
                 aria-haspopup="dialog"
-                onClick={() => setLoginModal(true)}
+                onClick={() => dispatch(openLoginModal())}
               >
                 <div className="login-bg" />
                 <span>Login</span>
@@ -82,7 +89,7 @@ function Header() {
       </StyledHeader>
       <AbModal
         title="Cadastro"
-        onClose={closeRegistrationModal}
+        onClose={onCloseRegistrationModal}
         htmlId="abmodal-login-id"
         open={registrationModal}
       >
@@ -93,7 +100,7 @@ function Header() {
       </AbModal>
       <AbModal
         title="Cadastro"
-        onClose={closeLoginModal}
+        onClose={onCloseLoginModal}
         htmlId="abmodal-login-id"
         open={loginModal}
       >
