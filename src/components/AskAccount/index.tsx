@@ -1,7 +1,11 @@
 import { AbButton } from "alurabooks-ds-fearinn";
+import { openLoginModal } from "../../store/reducers/loginModal";
+import { openRegistrationModal } from "../../store/reducers/registrationModal";
+import { useTypedDispatch } from "../../utils/hooks";
 import StyledAskAccount from "./StyledAskAccount";
 
 function AskAccount() {
+  const dispatch = useTypedDispatch();
   return (
     <StyledAskAccount>
       <div className="text">
@@ -11,8 +15,15 @@ function AskAccount() {
         </p>
       </div>
       <div className="buttons">
-        <AbButton text="Criar conta" customType="secondary" />
-        <AbButton text="Fazer login" />
+        <AbButton
+          text="Criar conta"
+          customType="secondary"
+          onClick={() => dispatch(openRegistrationModal())}
+        />
+        <AbButton
+          text="Fazer login"
+          onClick={() => dispatch(openLoginModal())}
+        />
       </div>
     </StyledAskAccount>
   );
