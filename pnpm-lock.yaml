@@ -8,7 +8,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.52.0
   '@typescript-eslint/parser': ^5.52.0
   '@vitejs/plugin-react': ^3.0.0
-  alurabooks-ds-fearinn: ^0.7.12
+  alurabooks-ds-fearinn: ^0.7.15
   axios: ^1.3.2
   eslint: ^8.34.0
   eslint-plugin-jsx-a11y: ^6.7.1
@@ -25,7 +25,7 @@ specifiers:
 
 dependencies:
   '@types/styled-components': 5.1.26
-  alurabooks-ds-fearinn: 0.7.12_7i5myeigehqah43i5u7wbekgba
+  alurabooks-ds-fearinn: 0.7.15_7i5myeigehqah43i5u7wbekgba
   axios: 1.3.2
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -838,8 +838,8 @@ packages:
       uri-js: 4.4.1
     dev: true
 
-  /alurabooks-ds-fearinn/0.7.12_7i5myeigehqah43i5u7wbekgba:
-    resolution: {integrity: sha512-SbQIcOy3dBoJi8s4zgT5CLvcMqeer5U0pRqxWukWVbbjMgjYbQN7UjAUvH0uqVV9SBLwikaiXz4igWil8jZfaw==}
+  /alurabooks-ds-fearinn/0.7.15_7i5myeigehqah43i5u7wbekgba:
+    resolution: {integrity: sha512-bvBEPy4RUiJvbcwcx/j3iYPeimRFYv/nzPIjEGUv22T97Vn+B1dcbZJds5jlrmYARv240aiJtjb6icGbnW4PIw==}
     engines: {node: '>=10'}
     peerDependencies:
       react: '>=16'
