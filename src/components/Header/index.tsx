@@ -1,6 +1,6 @@
 import { AbModal } from "alurabooks-ds-fearinn";
 import { useState } from "react";
-import { useGetToken } from "../../utils/hooks";
+import { useTypedDispatch, useTypedSelector } from "../../utils/hooks";
 import LoginForm from "../LoginForm";
 import RegistrationForm from "../RegistrationForm";
 import Categories from "./Categories";
@@ -10,12 +10,15 @@ import {
   StyledModalContent,
 } from "./StyledHeader";
 import { Link, useNavigate } from "react-router-dom";
+import  { doLogin } from "../../store/reducers/login";
 
 function Header() {
   const [registrationModal, setRegistrationModal] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
-  const token = useGetToken();
-  const [logged, setLogged] = useState(!!token);
+  const isLogged = useTypedSelector((state) => state.login);
+
+  const dispatch = useTypedDispatch();
+
   const navigate = useNavigate();
 
   function closeRegistrationModal() {
@@ -29,7 +32,7 @@ function Header() {
   function onLogin() {
     if (registrationModal) closeRegistrationModal();
     if (loginModal) closeLoginModal();
-    setLogged(true);
+    dispatch(doLogin())
   }
 
   return (
@@ -43,7 +46,7 @@ function Header() {
         </Link>
         <Categories />
         <nav className="user-navigation">
-          {!logged ? (
+          {!isLogged ? (
             <>
               <StyledUserOption
                 type="button"
