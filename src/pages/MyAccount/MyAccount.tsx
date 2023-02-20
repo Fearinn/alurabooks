@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import LateralNav from "../../components/LateralNav";
+import MainTitle from "../../components/MainTitle";
 import StyledMyAccount from "./StyledMyAccount";
 
 const links = [
@@ -12,9 +13,7 @@ const links = [
 function MyAccount() {
   return (
     <StyledMyAccount>
-      <header>
-        <h1>Minha conta</h1>
-      </header>
+      <MainTitle title="Minha conta"/>
       <main>
         <LateralNav links={links} />
         <Outlet />
