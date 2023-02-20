@@ -1,16 +1,26 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import http from "../../../http";
+import ICategory from "../../../interfaces/Category";
 import StyledCategories from "./StyledCategories";
 
 function Categories() {
   const categoryRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
+  const [categories, setCategories] = useState<ICategory[]>([]);
 
   let alreadyMounted = false;
 
   useEffect(() => {
     if (alreadyMounted) return;
+
+    http.get<ICategory[]>("/categorias").then((response) => {
+      console.log(response.data);
+      setCategories(response.data);
+    });
+
     alreadyMounted = true;
+
     document.addEventListener("click", (event) => {
       if (
         event.target instanceof HTMLElement &&
@@ -49,11 +59,11 @@ function Categories() {
       </button>
       {open && (
         <nav>
-          <Link to="/">Programação</Link>
-          <Link to="/">Front-End</Link>
-          <Link to="/">Infraestrutura</Link>
-          <Link to="/">Business</Link>
-          <Link to="/">Design & UX</Link>
+          {categories.map((category) => (
+            <Link key={category.id} to={`categorias/${category.slug}`}>
+              {category.nome}
+            </Link>
+          ))}
         </nav>
       )}
     </StyledCategories>
