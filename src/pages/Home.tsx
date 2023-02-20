@@ -1,7 +1,6 @@
 import AskAccount from "../components/AskAccount";
 import Banner from "../components/Banner";
 import BookSection from "../components/BookSection";
-import Header from "../components/Header";
 import Newsletter from "../components/Newsletter";
 import IBook from "../interfaces/Book";
 import IBookSection from "../interfaces/BookSection";
@@ -72,7 +71,7 @@ const lancamentos: IBook[] = [
 function Home () {
     return (
         <>
-      <Header />
+
       <main>
         <Banner />
         {sections.map((section) => {
