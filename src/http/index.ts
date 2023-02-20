@@ -1,4 +1,5 @@
 import axios, { AxiosError } from "axios";
+import ICategory from "../interfaces/Category";
 import { useGetToken } from "../utils/hooks";
 
 const http = axios.create({
@@ -19,12 +20,24 @@ http.interceptors.request.use(
   }
 );
 
-http.interceptors.response.use((response) => {
-  return response;
-}, (error: AxiosError) => {
+http.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error: AxiosError) => {
     if (error.response?.status === 401) {
-        window.location.pathname = "/"
+      window.location.pathname = "/";
     }
-    return Promise.reject(error)
-});
+    return Promise.reject(error);
+  }
+);
 export default http;
+
+export const getCategoryBySlug = async (slug: string | undefined) => {
+  if (!slug) return;
+  const response = await http.get<ICategory[]>("/categorias", {
+    params: { slug },
+  });
+
+  return response.data[0];
+};
