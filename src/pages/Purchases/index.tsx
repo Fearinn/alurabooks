@@ -1,6 +1,6 @@
 import { AbButton } from "alurabooks-ds-fearinn";
 import { useEffect, useState } from "react";
-import { IPurchase } from "../../interfaces/IPurchases";
+import { IPurchase } from "../../interfaces/Purchases";
 import { useGetToken } from "../../utils/hooks";
 import http from "../../http"
 import StyledPurchases from "./StyledPurchases";
