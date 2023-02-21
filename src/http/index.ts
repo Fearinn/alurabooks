@@ -45,12 +45,20 @@ export const getCategoryBySlug = async (slug: string | undefined) => {
 
 export const getReleasesBooks = async () => {
   const response = await http.get<IBook[]>("/public/lancamentos");
-  console.log(response.data)
-  return response.data
+  return response.data;
 };
 
 export const getBestSellers = async () => {
   const response = await http.get<IBook[]>("/public/mais-vendidos");
+  return response.data;
+};
+
+export const getBooksFromCategory = async (category: ICategory) => {
+  const response = await http.get<IBook[]>("livros", {
+    params: {
+      categoria: category.id,
+    },
+  });
   console.log(response.data)
   return response.data;
 };

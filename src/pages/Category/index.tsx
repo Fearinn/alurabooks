@@ -3,6 +3,7 @@ import { getCategoryBySlug } from "../../http";
 import Loader from "../../components/Loader";
 import MainTitle from "../../components/MainTitle";
 import { useQuery } from "@tanstack/react-query";
+import ListedBooks from "../../components/ListedBooks";
 
 function Category() {
   const { slug } = useParams();
@@ -11,11 +12,12 @@ function Category() {
     getCategoryBySlug(slug)
   );
 
-  if (isLoading) return <Loader />;
+  if (isLoading || !category) return <Loader />;
 
   return (
     <>
-      <MainTitle title={category?.nome || ""} />
+      <MainTitle title={category.nome || ""} />
+      <ListedBooks category={category} />
     </>
   );
 }
