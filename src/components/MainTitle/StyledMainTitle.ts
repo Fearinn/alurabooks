@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledMainTitle = styled.header`
+const StyledMainTitle = styled.div`
   background: linear-gradient(97.54deg, #002f52 35.49%, #326589 165.37%);
   padding: 1rem;
   width: 100%;
