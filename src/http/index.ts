@@ -1,4 +1,5 @@
 import axios, { AxiosError } from "axios";
+import IBook from "../interfaces/Book";
 import ICategory from "../interfaces/Category";
 import { useGetToken } from "../utils/hooks";
 
@@ -40,4 +41,16 @@ export const getCategoryBySlug = async (slug: string | undefined) => {
   });
 
   return response.data[0];
+};
+
+export const getReleasesBooks = async () => {
+  const response = await http.get<IBook[]>("/public/lancamentos");
+  console.log(response.data)
+  return response.data
+};
+
+export const getBestSellers = async () => {
+  const response = await http.get<IBook[]>("/public/mais-vendidos");
+  console.log(response.data)
+  return response.data;
 };
