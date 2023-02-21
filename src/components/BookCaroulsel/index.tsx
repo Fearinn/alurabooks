@@ -7,8 +7,8 @@ function moveCarousel(array: IBook[], idPrevious: number, idBook: number) {
     const bookIndex = array.findIndex((item) => idBook === item.id);
     const previousIndex = array.findIndex((item) => idPrevious === item.id);
 
-    let book = array[bookIndex];
-    let previous = array[previousIndex];
+    const book = array[bookIndex];
+    const previous = array[previousIndex];
     const lastIndex = array.length - 1;
 
     if (bookIndex === lastIndex) {
@@ -35,7 +35,7 @@ function BookCarousel({ books, select, previous }: IBookCarousel) {
           <StyledBookCover
             selected={book.id === previous.id}
             className="book-cover"
-            aria-label={`${book.title}. Detalhes abaixo.`}
+            aria-label={`${book.titulo}. Detalhes abaixo.`}
             tabIndex={0}
             key={book.id}
             onFocus={() => {
@@ -45,7 +45,7 @@ function BookCarousel({ books, select, previous }: IBookCarousel) {
               }, 200);
             }}
           >
-            <img src={book.img} alt={`capa de ${book.title}`} />
+            <img src={book.imagemCapa} alt={`capa de ${book.titulo}`} />
           </StyledBookCover>
         );
       })}

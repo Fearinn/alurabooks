@@ -17,16 +17,17 @@ const fillHeart = {
   color: "red",
 };
 
-function BookCard({ title, summary, author, favorite = false, price }: IBook) {
+function BookCard({ titulo, descricao, autor, favorite = false, opcoesCompra }: IBook & {favorite?: boolean}) {
   const [favorited, setFavorited] = useState(favorite);
+  const price = opcoesCompra[0].preco
   return (
     <StyledBookCard>
       <div className="book-info">
         <span className="book-label">Sobre o livro:</span>
-        <h3 className="book-title">{title}</h3>
+        <h3 className="book-title">{titulo}</h3>
         <div className="book-details">
-          <p>{summary}</p>
-          <p>Por: {author}</p>
+          <p>{descricao}</p>
+          <p>Por: {autor}</p>
         </div>
         <div className="book-price">
           <span>A partir de:</span>
