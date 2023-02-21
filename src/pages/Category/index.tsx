@@ -15,10 +15,10 @@ function Category() {
   if (isLoading || !category) return <Loader />;
 
   return (
-    <>
+    <main>
       <MainTitle title={category.nome || ""} />
       <ListedBooks category={category} />
-    </>
+    </main>
   );
 }
 
