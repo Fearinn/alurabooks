@@ -15,7 +15,6 @@ function Categories() {
     if (alreadyMounted) return;
 
     http.get<ICategory[]>("/categorias").then((response) => {
-      console.log(response.data);
       setCategories(response.data);
     });
 

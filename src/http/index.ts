@@ -59,6 +59,5 @@ export const getBooksFromCategory = async (category: ICategory) => {
       categoria: category.id,
     },
   });
-  console.log(response.data)
   return response.data;
 };
