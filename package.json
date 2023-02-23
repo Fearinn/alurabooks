@@ -12,7 +12,7 @@
     "@reduxjs/toolkit": "^1.9.2",
     "@tanstack/react-query": "^4.24.9",
     "@types/styled-components": "^5.1.26",
-    "alurabooks-ds-fearinn": "^0.7.18",
+    "alurabooks-ds-fearinn": "^0.8.1",
     "axios": "^1.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
