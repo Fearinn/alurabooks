@@ -1,8 +1,9 @@
 import { AbButton } from "alurabooks-ds-fearinn";
+import { Link } from "react-router-dom";
 import IBook from "../../interfaces/Book";
 import StyledMiniBookCard from "./StyledMiniBookCard";
 
-function MiniBookCard({ titulo, opcoesCompra, imagemCapa }: IBook) {
+function MiniBookCard({ titulo, opcoesCompra, imagemCapa, id }: IBook) {
   const price = opcoesCompra
     ? Math.min(...opcoesCompra.map((opcao) => opcao.preco))
     : 0;
@@ -14,7 +15,9 @@ function MiniBookCard({ titulo, opcoesCompra, imagemCapa }: IBook) {
         <span>A partir de:</span>
         <span className="price-value">{price}</span>
       </div>
-      <AbButton text="Comprar" />
+      <Link to={`/livro/${id}`}>
+        <AbButton text="Comprar"></AbButton>
+      </Link>
     </StyledMiniBookCard>
   );
 }

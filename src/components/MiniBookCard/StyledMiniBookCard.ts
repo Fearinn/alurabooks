@@ -4,7 +4,7 @@ import { styledFontColor2 } from "../../assets/variables";
 const StyledMiniBookCard = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
   gap: 0.5rem;
   color: ${styledFontColor2};
@@ -17,6 +17,10 @@ const StyledMiniBookCard = styled.div`
 
   h2 {
     font-size: 1.125rem;
+  }
+
+  a > button {
+    width: 100%;
   }
 
   .price-value {

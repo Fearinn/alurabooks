@@ -4,6 +4,7 @@ import Purchases from "./pages/Purchases";
 import MyAccount from "./pages/MyAccount/MyAccount";
 import Category from "./pages/Category";
 import DefaultPage from "./pages/DefaultPage";
+import BookPage from "./pages/BookPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route path="pedidos" element={<Purchases />} />
           </Route>
           <Route path="categorias/:slug" element={<Category />} />
+          <Route path="livro/:id" element={<BookPage/>} />
         </Route>
       </Routes>
     </BrowserRouter>

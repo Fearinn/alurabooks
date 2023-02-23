@@ -61,3 +61,13 @@ export const getBooksFromCategory = async (category: ICategory) => {
   });
   return response.data;
 };
+
+export const getBookById = async (id: number) => {
+  if (!id && id !== 0) return;
+  const response = await http.get<IBook[]>("livros", {
+    params: {
+      id: id,
+    },
+  });
+  return response.data[0];
+};
