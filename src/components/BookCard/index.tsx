@@ -5,6 +5,7 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { styledFontColor2 } from "../../assets/variables";
 import { useState } from "react";
+import formatPrice from "../../utils/formatPrice";
 
 const outline = {
   size: 48,
@@ -17,9 +18,19 @@ const fillHeart = {
   color: "red",
 };
 
-function BookCard({ titulo, descricao, autor, favorite = false, opcoesCompra }: IBook & {favorite?: boolean}) {
+function BookCard({
+  titulo,
+  descricao,
+  autor,
+  favorite = false,
+  opcoesCompra,
+}: IBook & { favorite?: boolean }) {
   const [favorited, setFavorited] = useState(favorite);
-  const price = opcoesCompra[0].preco
+  const price = opcoesCompra
+    ? Math.min(...opcoesCompra.map((opcao) => opcao.preco))
+    : 0;
+
+  const formattedPrice = formatPrice(price);
   return (
     <StyledBookCard>
       <div className="book-info">
@@ -31,7 +42,7 @@ function BookCard({ titulo, descricao, autor, favorite = false, opcoesCompra }: 
         </div>
         <div className="book-price">
           <span>A partir de:</span>
-          <span>R${price.toFixed(2).toString().padStart(2, "0")}</span>
+          <span>R${formattedPrice}</span>
         </div>
       </div>
       <div className="book-options">
