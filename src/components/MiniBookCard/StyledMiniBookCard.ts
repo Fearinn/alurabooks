@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { styledFontColor2 } from "../../assets/variables";
+import { bookCoverShadow, styledFontColor2 } from "../../assets/variables";
 
 const StyledMiniBookCard = styled.div`
   display: flex;
@@ -12,6 +12,7 @@ const StyledMiniBookCard = styled.div`
   height: 100%;
 
   img {
+    ${bookCoverShadow};
     width: 100%;
   }
 

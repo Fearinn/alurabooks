@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { gradient } from "../../assets/variables";
+import { bookCoverShadow, gradient } from "../../assets/variables";
 
 const StyledBookPage = styled.div`
   display: flex;
@@ -30,7 +30,7 @@ const StyledBookPage = styled.div`
     img {
       grid-area: one;
       aspect-ratio: 381/480;
-      box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.15);
+      ${bookCoverShadow};
       max-height: 240px;
       height: 100%;
 

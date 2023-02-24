@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { bookCoverShadow } from "../../assets/variables";
 
 export const StyledBookCarousel = styled.div`
   display: flex;
@@ -20,6 +21,7 @@ export const StyledBookCover = styled.div<{ selected: boolean }>`
   flex-shrink: 0;
 
   img {
+    ${bookCoverShadow};
     width: 100%;
   }
 
