@@ -1,20 +1,36 @@
 import { useQuery } from "@tanstack/react-query";
 import { AbButton, AbOptionsGroup, AbQuantity } from "alurabooks-ds-fearinn";
+import { AxiosError } from "axios";
 import { useParams } from "react-router-dom";
 import Loader from "../../components/Loader";
 import MainTitle from "../../components/MainTitle";
 import TextBlock from "../../components/TextBlock";
 import { getBookById } from "../../http";
+import IBook from "../../interfaces/Book";
 import StyledBookPage from "./StyledBookPage";
 
 function BookDetails() {
   const { id } = useParams();
 
-  const { data: book, isLoading } = useQuery(["bookById", id], () =>
+  const {
+    data: book,
+    isLoading,
+    error,
+  } = useQuery<IBook | null, AxiosError>(["bookById", id], () =>
     getBookById(Number(id))
   );
 
-  if (!book || isLoading) return <Loader />;
+  if (error || !book) {
+    if (!book)
+      return <span role="alert">Oops, o livro não foi encontrado!</span>;
+    return (
+      <span role="alert">
+        Oops, houve um erro inesperado! Aguarde e tente novamente.
+      </span>
+    );
+  }
+
+  if (isLoading) return <Loader />;
 
   const options = book.opcoesCompra.map((opcao) => ({
     identificator: opcao.id,

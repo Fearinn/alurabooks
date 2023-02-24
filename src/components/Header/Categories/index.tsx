@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import http from "../../../http";
@@ -16,7 +17,7 @@ function Categories() {
 
     http.get<ICategory[]>("/categorias").then((response) => {
       setCategories(response.data);
-    });
+    }).catch((error: AxiosError) => {console.error(`Error fetching list of categories: ${error.code} ${error.message}`)});
 
     alreadyMounted = true;
 

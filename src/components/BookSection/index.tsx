@@ -7,22 +7,30 @@ import BookCarousel from "../BookCaroulsel";
 import StyledSection from "./StyledSection";
 
 function BookSection({ title, books }: IBookSection) {
-  const [bookSelected, setBookSelected] = useState<IBook>(books[1]);
+  const [bookSelected, setBookSelected] = useState<IBook | undefined>(
+    books[Math.floor(books.length / 2)]
+  );
   return (
     <StyledSection>
       <h2>{title}</h2>
-      <div className="books">
-        <BookCarousel books={books} select={setBookSelected} previous={bookSelected}/>
-        {books.map((book) => {
-          return (
-            book.id === bookSelected.id && (
-              <AbCard key={book.id} className="abcard">
-                <BookCard {...book} />
-              </AbCard>
-            )
-          );
-        })}
-      </div>
+      {bookSelected && (
+        <div className="books">
+          <BookCarousel
+            books={books}
+            select={setBookSelected}
+            previous={bookSelected}
+          />
+          {books.map((book) => {
+            return (
+              book.id === bookSelected.id && (
+                <AbCard key={book.id} className="abcard">
+                  <BookCard {...book} />
+                </AbCard>
+              )
+            );
+          })}
+        </div>
+      )}
     </StyledSection>
   );
 }
