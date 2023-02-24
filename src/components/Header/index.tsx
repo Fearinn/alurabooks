@@ -101,7 +101,7 @@ function Header() {
       <AbModal
         title="Cadastro"
         onClose={onCloseLoginModal}
-        htmlId="abmodal-login-id"
+        htmlId="abmodal-cadastro-id"
         open={loginModal}
       >
         <StyledModalContent>
