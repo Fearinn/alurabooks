@@ -1,38 +1,34 @@
-import { useQuery } from "@tanstack/react-query";
-import { AbButton, AbOptionsGroup, AbQuantity } from "alurabooks-ds-fearinn";
-import { AxiosError } from "axios";
+import {
+  AbButton,
+  AbOptionsGroup,
+  AbQuantity,
+  AbTag,
+} from "alurabooks-ds-fearinn";
 import { useParams } from "react-router-dom";
 import Loader from "../../components/Loader";
 import MainTitle from "../../components/MainTitle";
 import TextBlock from "../../components/TextBlock";
-import { getBookById } from "../../http";
-import IBook from "../../interfaces/Book";
+import { useSingleBook } from "../../graphql/books/hooks";
 import StyledBookPage from "./StyledBookPage";
 
 function BookDetails() {
-  const { id } = useParams();
+  const { slug } = useParams();
 
-  const {
-    data: book,
-    isLoading,
-    error,
-  } = useQuery<IBook | null, AxiosError>(["bookById", id], () =>
-    getBookById(Number(id))
-  );
+  const { data, loading, error } = useSingleBook(slug ?? "");
 
-  if (error || !book) {
-    if (!book)
-      return <span role="alert">Oops, o livro não foi encontrado!</span>;
-    return (
-      <span role="alert">
-        Oops, houve um erro inesperado! Aguarde e tente novamente.
-      </span>
-    );
+  if (error || !data) {
+    if (error)
+      return (
+        <span role="alert">
+          Oops, houve um erro inesperado! Aguarde e tente novamente.
+        </span>
+      );
+    return <span role="alert">Oops, o livro não foi encontrado!</span>;
   }
 
-  if (isLoading) return <Loader />;
+  if (loading) return <Loader />;
 
-  const options = book.opcoesCompra.map((opcao) => ({
+  const options = data.livro.opcoesCompra.map((opcao) => ({
     identificator: opcao.id,
     title: opcao.titulo,
     price: opcao.preco,
@@ -44,11 +40,14 @@ function BookDetails() {
       <MainTitle title="Detalhes do livro" />
       <StyledBookPage>
         <div className="book-details">
-          <img src={book.imagemCapa} alt={`Capa do livro ${book.titulo}`} />
+          <img
+            src={data.livro.imagemCapa}
+            alt={`Capa do livro ${data.livro.titulo}`}
+          />
           <div className="main-info">
-            <h2>{book.titulo}</h2>
-            <p>{book.descricao}</p>
-            <span>Por: {book.autor}</span>
+            <h2>{data.livro.titulo}</h2>
+            <p>{data.livro.descricao}</p>
+            <span>Por: {data.livro.autor.nome}</span>
           </div>
           <div className="options">
             <h3>Selecione o seu livro</h3>
@@ -58,21 +57,19 @@ function BookDetails() {
             <AbButton text="Comprar" />
           </div>
         </div>
-        <TextBlock title="Sobre o autor">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat
-          quam vel lectus scelerisque, non elementum erat facilisis. Nulla elit
-          purus, porta non dolor ut, facilisis consequat libero. Etiam id ornare
-          sapien. Phasellus eget ligula ligula. Aliquam a augue a risus auctor
-          ullamcorper quis ac risus. Morbi at augue a nulla mollis tristique.
-          Nulla consequat odio urna, a vestibulum sapien mollis eget.
-        </TextBlock>
-        <TextBlock title="Sobre o livro">
-          Curabitur neque erat, tincidunt hendrerit quam in, commodo molestie
-          nibh. Vivamus nec lectus sed nunc posuere aliquet et et velit. Nullam
-          sed lacus id tellus rutrum consequat quis at nisl. Vestibulum ante
-          ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-          curae; Maecenas iaculis nulla eget lacus gravida pretium.
-        </TextBlock>
+        <div className="about">
+          <TextBlock title="Sobre o autor">{data.livro.autor.sobre}</TextBlock>
+          <TextBlock title="Sobre o livro">{data.livro.sobre}</TextBlock>
+        </div>
+        <ul className="tags">
+          {data.livro.tags.map((tag) => {
+            return (
+              <li key={tag.id}>
+                <AbTag>{tag.nome}</AbTag>
+              </li>
+            );
+          })}
+        </ul>
       </StyledBookPage>
     </main>
   );

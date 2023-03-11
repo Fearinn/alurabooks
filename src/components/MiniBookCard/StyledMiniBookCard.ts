@@ -8,8 +8,8 @@ const StyledMiniBookCard = styled.div`
   justify-content: space-between;
   gap: 0.5rem;
   color: ${styledFontColor2};
-  text-align: center;
   height: 100%;
+  text-align: center;
 
   img {
     ${bookCoverShadow};

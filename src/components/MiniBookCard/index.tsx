@@ -4,7 +4,7 @@ import IBook from "../../interfaces/Book";
 import formatPrice from "../../utils/formatPrice";
 import StyledMiniBookCard from "./StyledMiniBookCard";
 
-function MiniBookCard({ titulo, opcoesCompra, imagemCapa, id }: IBook) {
+function MiniBookCard({ titulo, opcoesCompra, imagemCapa, slug }: IBook) {
   const price = opcoesCompra
     ? Math.min(...opcoesCompra.map((opcao) => opcao.preco))
     : 0;
@@ -18,7 +18,7 @@ function MiniBookCard({ titulo, opcoesCompra, imagemCapa, id }: IBook) {
         <span>A partir de:</span>
         <span className="price-value">{formattedPrice}</span>
       </div>
-      <Link to={`/livro/${id}`}>
+      <Link to={`/livro/${slug}`}>
         <AbButton text="Comprar"></AbButton>
       </Link>
     </StyledMiniBookCard>

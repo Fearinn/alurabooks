@@ -19,7 +19,7 @@ function LoginForm({ onSubmit }: { onSubmit: () => void }) {
     };
 
     http
-      .post("http://localhost:8000/public/login", user)
+      .post("http://localhost:7000/public/login", user)
       .then((response) => {
         saveToken(response.data.access_token);
         setEmail("");

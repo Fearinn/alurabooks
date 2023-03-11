@@ -1,27 +1,50 @@
-import { useQuery } from "@tanstack/react-query";
-import { AxiosError } from "axios";
-import { getBooksFromCategory } from "../../http";
-import IBook from "../../interfaces/Book";
+import { useReactiveVar } from "@apollo/client";
+import { AbInput } from "alurabooks-ds-fearinn";
+import { useEffect, useState } from "react";
+import { useBooks } from "../../graphql/books/hooks";
+import { bookFiltersVar, booksVar } from "../../graphql/books/state";
 import ICategory from "../../interfaces/Category";
 import Loader from "../Loader";
 import MiniBookCard from "../MiniBookCard";
 import StyledListedBooks from "./StyledListedBooks";
 
 function ListedBooks({ category }: { category: ICategory }) {
-  const { data: books, isLoading, error } = useQuery<IBook[], AxiosError>(["booksByCategory", category], () =>
-    getBooksFromCategory(category)
-  );
+  const [search, setSearch] = useState("");
+  const books = useReactiveVar(booksVar);
 
-  if (error || !books) return <span role="alert">Oops, houve um erro inesperado! Aguarde e tente novamente.</span>
+  const { loading, error } = useBooks();
 
-  if (isLoading) return <Loader />;
+  useEffect(() => {
+    bookFiltersVar({
+      categoria: category,
+      titulo: search.length >= 3 ? search : "",
+    });
+  }, [search]);
+
+  if (error || !books)
+    return (
+      <span role="alert">
+        Oops, houve um erro inesperado! Aguarde e tente novamente.
+      </span>
+    );
+
+  if (loading) return <Loader />;
+
   return (
     <StyledListedBooks>
-      {books.map((book) => (
-        <li key={book.id}>
-          <MiniBookCard {...book} />
-        </li>
-      ))}
+      <AbInput
+        htmlId={`search-book-category${category.id}`}
+        onChange={setSearch}
+        label="Busque um livro pelo título!"
+        value={search}
+      ></AbInput>
+      <ul>
+        {books.map((book) => (
+          <li key={book.id}>
+            <MiniBookCard {...book} />
+          </li>
+        ))}
+      </ul>
     </StyledListedBooks>
   );
 }

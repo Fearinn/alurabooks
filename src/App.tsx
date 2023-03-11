@@ -16,7 +16,7 @@ function App() {
             <Route path="pedidos" element={<Purchases />} />
           </Route>
           <Route path="categorias/:slug" element={<Category />} />
-          <Route path="livro/:id" element={<BookPage/>} />
+          <Route path="livro/:slug" element={<BookPage/>} />
         </Route>
       </Routes>
     </BrowserRouter>

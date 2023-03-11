@@ -38,11 +38,11 @@ function BookCard({
         <h3 className="book-title">{titulo}</h3>
         <div className="book-details">
           <p>{descricao}</p>
-          <p>Por: {autor}</p>
+          <p>Por: {autor.nome}</p>
         </div>
         <div className="book-price">
           <span>A partir de:</span>
-          <span>R${formattedPrice}</span>
+          <span>{formattedPrice}</span>
         </div>
       </div>
       <div className="book-options">

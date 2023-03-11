@@ -1,24 +1,36 @@
-import { AxiosError } from "axios";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import http from "../../../http";
-import ICategory from "../../../interfaces/Category";
+import { useCategories } from "../../../graphql/categories/hooks";
+import Loader from "../../Loader";
 import StyledCategories from "./StyledCategories";
 
 function Categories() {
   const categoryRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
-  const [categories, setCategories] = useState<ICategory[]>([]);
+
+  const { data, loading, error } = useCategories();
+
+  function handleCategories() {
+    if (loading) return <Loader />;
+
+    if (!data || error)
+      return (
+        <span role="alert">
+          Oops, houve um erro inesperado! Aguarde e tente novamente.
+        </span>
+      );
+
+    return data.categorias.map((category) => (
+      <Link key={category.id} to={`categorias/${category.slug}`}>
+        {category.nome}
+      </Link>
+    ));
+  }
 
   let alreadyMounted = false;
 
   useEffect(() => {
     if (alreadyMounted) return;
-
-    http.get<ICategory[]>("/categorias").then((response) => {
-      setCategories(response.data);
-    }).catch((error: AxiosError) => {console.error(`Error fetching list of categories: ${error.code} ${error.message}`)});
-
     alreadyMounted = true;
 
     document.addEventListener("click", (event) => {
@@ -57,15 +69,7 @@ function Categories() {
           </svg>
         </span>
       </button>
-      {open && (
-        <nav>
-          {categories.map((category) => (
-            <Link key={category.id} to={`categorias/${category.slug}`}>
-              {category.nome}
-            </Link>
-          ))}
-        </nav>
-      )}
+      {open && <nav>{handleCategories()}</nav>}
     </StyledCategories>
   );
 }

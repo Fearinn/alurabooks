@@ -10,7 +10,19 @@ export default interface IBook {
   numeroPaginas: number;
   publicacao: string;
   imagemCapa: string;
-  autor: number;
+  autor: IAuthor;
   opcoesCompra: IPurchaseOption[];
   sobre: string;
+  tags: ITag[];
+}
+
+interface IAuthor {
+  id: number;
+  sobre: string;
+  nome: string;
+}
+
+interface ITag {
+  id: number;
+  nome: string;
 }

@@ -92,6 +92,18 @@ const StyledBookPage = styled.div`
       }
     }
   }
+
+  .about {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .tags {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
 `;
 
 export default StyledBookPage;
