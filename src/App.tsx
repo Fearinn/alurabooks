@@ -5,6 +5,7 @@ import MyAccount from "./pages/MyAccount/MyAccount";
 import Category from "./pages/Category";
 import DefaultPage from "./pages/DefaultPage";
 import BookPage from "./pages/BookPage";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<DefaultPage />}>
           <Route index element={<Home />} />
+          <Route path="minha-sacola" element={<Cart/>}/>
           <Route path="minha-conta" element={<MyAccount />}>
             <Route path="pedidos" element={<Purchases />} />
           </Route>

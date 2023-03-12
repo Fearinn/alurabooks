@@ -15,7 +15,12 @@ function Home() {
       return <span role="alert">Oops, um erro inesperado aconteceu!</span>;
     }
 
-    return <BookSection title="Lançamentos" books={data.destaques.lancamentos || []} />;
+    return (
+      <BookSection
+        title="Lançamentos"
+        books={data.destaques.lancamentos || []}
+      />
+    );
   }
 
   function HandleBestSellers() {
@@ -26,7 +31,10 @@ function Home() {
     }
 
     return (
-      <BookSection title="Mais vendidos" books={data.destaques.maisVendidos || []} />
+      <BookSection
+        title="Mais vendidos"
+        books={data.destaques.maisVendidos || []}
+      />
     );
   }
 

@@ -4,17 +4,27 @@ import {
   AbQuantity,
   AbTag,
 } from "alurabooks-ds-fearinn";
+import { IAbOption } from "alurabooks-ds-fearinn/dist/interfaces/Option";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "../../components/Loader";
 import MainTitle from "../../components/MainTitle";
 import TextBlock from "../../components/TextBlock";
 import { useSingleBook } from "../../graphql/books/hooks";
+import { useAddItem } from "../../graphql/cart/hooks";
+import { ICartItem } from "../../interfaces/Cart";
 import StyledBookPage from "./StyledBookPage";
 
 function BookDetails() {
   const { slug } = useParams();
 
   const { data, loading, error } = useSingleBook(slug ?? "");
+
+  const [addItemMutation] = useAddItem();
+
+  const [option, setOption] = useState<IAbOption>();
+
+  const [quantity, setQuantity] = useState(1);
 
   if (error || !data) {
     if (error)
@@ -27,6 +37,35 @@ function BookDetails() {
   }
 
   if (loading) return <Loader />;
+
+  function addItem(item: ICartItem | null) {
+    if (!item) {
+      alert("Por favor, selecione uma opção de compra");
+      return;
+    }
+    addItemMutation({
+      variables: {
+        item: {
+          livroId: item.livro.id,
+          opcaoCompraId: item.opcaoCompra.id,
+          quantidade: item.quantidade,
+        },
+      },
+    });
+  }
+
+  function buildCartItem(): ICartItem | null {
+    if (!data?.livro || !option) return null;
+    return {
+      livro: data.livro,
+      quantidade: quantity,
+      opcaoCompra: {
+        id: option.identificator,
+        preco: option.price,
+        titulo: option.title,
+      },
+    };
+  }
 
   const options = data.livro.opcoesCompra.map((opcao) => ({
     identificator: opcao.id,
@@ -51,10 +90,13 @@ function BookDetails() {
           </div>
           <div className="options">
             <h3>Selecione o seu livro</h3>
-            <AbOptionsGroup options={options} />
+            <AbOptionsGroup options={options} onSelectOption={setOption} />
             <span>* Você terá acesso a futuras atualizações do livro.</span>
-            <AbQuantity />
-            <AbButton text="Comprar" />
+            <AbQuantity
+              initialQuantity={quantity}
+              onChangeQuantity={setQuantity}
+            />
+            <AbButton text="Comprar" onClick={() => addItem(buildCartItem())} />
           </div>
         </div>
         <div className="about">
