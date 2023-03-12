@@ -4,7 +4,7 @@ Project built during the course track ["Aprofunde em React e Comunique APIs"](ht
 
 ## 🖱️ How to use 
 
-The API was not built by me, so it's not hosted for continuos use. You must [clone it](https://github.com/alura-cursos/alurabooks-gql) and run **npm run start:dev** and **npm run start:api** in order to use all features of the website. Make sure the ports in your localhost match the ones used in the repository (9000 and 8000).
+The API was not built by me, so it's not hosted for continuos use. You must [clone it](https://github.com/alura-cursos/alurabooks-gql) and run **npm run start:dev** and **npm run start:api** in order to use all features of the website. Make sure the ports in your localhost match the ones used in the API (9000 and 8000).
 
 ## 👨‍💻 Tech stack
 
