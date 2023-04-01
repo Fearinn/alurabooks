@@ -6,6 +6,8 @@ Project built during the course track ["Aprofunde em React e Comunique APIs"](ht
 
 The API was not built by me, so it's not hosted for continuos use. You must [clone it](https://github.com/alura-cursos/alurabooks-gql) and run **npm run start:dev** and **npm run start:api** in order to use all features of the website. Make sure the ports in your localhost match the ones used in the API (9000 and 8000).
 
+In order to access the application with Vercel, you must also change the CORS origin in the API to `https://alurabooks-teal.vercel.app/`. You can find it in the file `app.module.ts`.
+
 ## 👨‍💻 Tech stack
 
 - React (TypeScript);
