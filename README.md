@@ -8,7 +8,7 @@
 
 Project built during the course track ["Aprofunde em React e Comunique APIs"](https://cursos.alura.com.br/formacao-react-consumindo-apis). It's a book e-commerce with API calls for authentication and data fetching. The main goal was to learn some React libraries and to discover different ways to handle APIs calls.
 
-![preview](https://user-images.githubusercontent.com/105985983/234129720-b7988047-98fd-49ed-bd50-c83b51a58ac4.png)
+![preview](https://user-images.githubusercontent.com/105985983/234129720-b7988047-98fd-49ed-bd50-c83b51a58ac4.png#vitrinedev)
 
 ## 🖱️ How to use 
 
